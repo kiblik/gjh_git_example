@@ -1,4 +1,5 @@
 import tkinter
+import math
 
 p1 = (50,50)
 p2 = (750,550)
@@ -36,5 +37,20 @@ canvas.create_line(
     map_axis(r1, r2, p1, p2, (0, r2[1]))
  )
 
+for px in range(p1[0]+1, p2[0]):
+    px_old = px-1
+    rx, junk = map_axis(p1, p2, r1, r2, (px, 0) )
+    rx_old, junk = map_axis(p1, p2, r1, r2, (px_old, 0) )
+
+    ry = math.sin(rx)
+    ry_old = math.sin(rx_old)
+
+    r = (rx,ry)
+    r_old = (rx_old, ry_old)
+
+    junk, py = map_axis(r1, r2, p1, p2, r)
+    junk, py_old = map_axis(r1, r2, p1, p2, r_old)
+
+    canvas.create_line(px,py,px_old,py_old)
 
 root.mainloop()
