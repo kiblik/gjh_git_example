@@ -16,6 +16,9 @@ def map_axis(self, a1, a2, b1, b2, point ):
     )
     return out
 
+root = tkinter.Tk()
+
 canvas = tkinter.Canvas()
 canvas.pack()
 
+root.mainloop()
