@@ -1,5 +1,11 @@
 import tkinter
 
+p1 = (50,50)
+p2 = (750,550)
+
+r1 = (-10,-10)
+r2 = (10,10)
+
 def map_axis(self, a1, a2, b1, b2, point ):
     (a1x, a1y) = a1
     (a2x, a2y) = a2
@@ -18,7 +24,7 @@ def map_axis(self, a1, a2, b1, b2, point ):
 
 root = tkinter.Tk()
 
-canvas = tkinter.Canvas()
+canvas = tkinter.Canvas(width=800, height=600)
 canvas.pack()
 
 root.mainloop()
