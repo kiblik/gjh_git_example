@@ -1,4 +1,5 @@
 import tkinter
+import math
 
 p1 = (50,50)
 p2 = (750,550)
@@ -6,7 +7,7 @@ p2 = (750,550)
 r1 = (-10,-10)
 r2 = (10,10)
 
-def map_axis(self, a1, a2, b1, b2, point ):
+def map_axis(a1, a2, b1, b2, point ):
     (a1x, a1y) = a1
     (a2x, a2y) = a2
     (b1x, b1y) = b1
@@ -26,5 +27,22 @@ root = tkinter.Tk()
 
 canvas = tkinter.Canvas(width=800, height=600)
 canvas.pack()
+
+for px in range(p1[0]+1, p2[0]):
+    px_old = px-1
+    rx, junk = map_axis(p1, p2, r1, r2, (px, 0) )
+    rx_old, junk = map_axis(p1, p2, r1, r2, (px_old, 0) )
+
+    ry = math.sin(rx)
+    ry_old = math.sin(rx_old)
+
+    r = (rx,ry)
+    r_old = (rx_old, ry_old)
+
+    junk, py = map_axis(r1, r2, p1, p2, r)
+    junk, py_old = map_axis(r1, r2, p1, p2, r_old)
+
+    canvas.create_line(px,py,px_old,py_old)
+
 
 root.mainloop()
