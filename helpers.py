@@ -31,6 +31,21 @@ class helper:
             self.map_axis(self.r1, self.r2, self.p1, self.p2, (0, self.r2[1]))
          )
 
+        for i in range(0, max(*self.r1,*self.r2)):
+            if i < max(self.r1[0],self.r2[0]):
+                xe, ye = self.map_axis(self.r1, self.r2, self.p1, self.p2, (i, 0))
+                self.canvas.create_line( xe, ye-5, xe, ye+5 )
+            if -i > min(self.r1[0],self.r2[0]):
+                xe, ye = self.map_axis(self.r1, self.r2, self.p1, self.p2, (-i, 0))
+                self.canvas.create_line( xe, ye-5, xe, ye+5 )
+            if i < max(self.r1[1],self.r2[1]):
+                xe, ye = self.map_axis(self.r1, self.r2, self.p1, self.p2, (0, i))
+                self.canvas.create_line( xe-5, ye, xe+5, ye )
+            if -i > min(self.r1[1],self.r2[1]):
+                xe, ye = self.map_axis(self.r1, self.r2, self.p1, self.p2, (0, -i))
+                self.canvas.create_line( xe-5, ye, xe+5, ye )
+         
+
     def draw(self,fcia):
 
         for px in range(self.p1[0]+1, self.p2[0]):
