@@ -18,7 +18,7 @@ class helper:
         (pointx, pointy) = point
         out = (
               (pointx - min(a1x,a2x) ) * bx/ax + min(b1x, b2x),
-              (pointy - min(a1y,a2y) ) * by/ay + min(b1y, b2y)
+              (-pointy + max(a1y,a2y) ) * by/ay + min(b1y, b2y)
         )
         return out
     def init(self):
