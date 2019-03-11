@@ -1,6 +1,6 @@
 import tkinter
-import math
 import helpers
+import fcie
 
 p1 = (50,50)
 p2 = (750,550)
@@ -17,5 +17,14 @@ h = helpers.helper(canvas, p1, p2, r1, r2)
 
 h.init()
 
-h.draw(math.sin)
+for fcia_name in h.list_fcia():
+    def creator(f):
+        fcia = getattr(fcie,f)
+        def wrapper():
+            h.init()
+            h.draw(fcia)
+        return wrapper
+    button = tkinter.Button(root, text = fcia_name, command = creator(fcia_name) )
+    button.pack()
+
 root.mainloop()
