@@ -22,6 +22,9 @@ class helper:
         )
         return out
     def init(self):
+
+        self.canvas.delete('all')
+
         self.canvas.create_line( 
             self.map_axis(self.r1, self.r2, self.p1, self.p2, (self.r1[0], 0)),
             self.map_axis(self.r1, self.r2, self.p1, self.p2, (self.r2[0], 0))
