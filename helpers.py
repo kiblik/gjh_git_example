@@ -49,3 +49,11 @@ class helper:
 
             self.canvas.create_line(px,py,px_old,py_old)
 
+    def list_fcia(self):
+        import fcie
+        out = []
+        for fcia in dir(fcie):
+            if fcia.find('_') == -1 and fcia != 'math':
+                out.append(fcia)
+        return out
+
